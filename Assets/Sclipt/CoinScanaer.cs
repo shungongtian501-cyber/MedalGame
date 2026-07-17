@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class CoinScanaer : MonoBehaviour
 {
-   [SerializeField] GameObject disappearingFloor;
-    [SerializeField] private CoinSpawner coinSpawner;
+    [SerializeField] GameObject disappearingFloor;
+
+    private CoinSpawner coinSpawner;
+
+    private void Start()
+    {
+        coinSpawner = FindFirstObjectByType<CoinSpawner>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Coin"))
+        if (collision.gameObject.CompareTag("Coin"))
         {
-            Destroy(disappearingFloor);
+            disappearingFloor.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Floor"))
         {

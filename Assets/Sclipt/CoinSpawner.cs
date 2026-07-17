@@ -11,5 +11,6 @@ public class CoinSpawner : MonoBehaviour
             Transform.Instantiate(CoinPrefab);
             CanSpawn = false;
         }
+        Debug.Log(CanSpawn);
     }
 }
