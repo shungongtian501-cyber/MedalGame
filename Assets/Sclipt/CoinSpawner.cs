@@ -8,7 +8,7 @@ public class CoinSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && CanSpawn == true)
         {
-            Transform.Instantiate(CoinPrefab);
+            Instantiate(CoinPrefab);
             CanSpawn = false;
         }
         Debug.Log(CanSpawn);

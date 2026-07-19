@@ -7,6 +7,8 @@ public class DeadZone : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
+            FindAnyObjectByType<CoinSpawner>().CanSpawn = true;
+            FindAnyObjectByType<GameManager>().CloseAllFloors();
         }
     }
 }

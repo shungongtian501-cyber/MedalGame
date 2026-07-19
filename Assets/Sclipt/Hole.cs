@@ -8,15 +8,22 @@ public class Hole : MonoBehaviour
 
     public void CoinEntered()
     {
-        
+        if (coinCount >= 2) return;
+
         coinCount++;
 
-        if (coinCount >= 2)
+        if (coinCount == 2)
         {
-            floor.SetActive(false);
+            GameManager.Instance.OpenAllFloors();
         }
+
         Debug.Log(coinCount);
     }
+    public void OpenFloor()
+    {
+        floor.SetActive(false);
+    }
+
 
     public void ResetHole()
     {
