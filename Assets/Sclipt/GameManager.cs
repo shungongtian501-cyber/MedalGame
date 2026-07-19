@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Hole[] holes;
+    [SerializeField] private HoleBase[] holes;
 
     public static GameManager Instance;
 
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenAllFloors()
     {
-        foreach (Hole hole in holes)
+        foreach (HoleBase hole in holes)
         {
             hole.OpenFloor();
         }
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseAllFloors()
     {
-        foreach (Hole hole in holes)
+        foreach (HoleBase hole in holes)
         {
             hole.ResetHole();
         }
