@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class Hole5 : HoleBase
+public class Hole4 : HoleBase
 {
     protected override void OnCoinEntered()
     {
-        Debug.Log("hole5");
+        Debug.Log("hole4");
+        BingoManager.Instance.Fill(5);
     }
 }

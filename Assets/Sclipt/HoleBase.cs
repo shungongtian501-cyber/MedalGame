@@ -7,18 +7,33 @@ public abstract class HoleBase : MonoBehaviour
 
     private int coinCount = 0;
 
+    //public void CoinEntered()
+    //{
+    //    OnCoinEntered();   // ← 子クラスで変更できる
+
+    //    coinCount++;
+
+    //    if (coinCount == 2)
+    //    {
+    //        GameManager.Instance.OpenAllFloors();
+    //        BingoManager.Instance.ResetBingo();
+    //    }
+
+    //    Debug.Log(coinCount);
+    //}
     public void CoinEntered()
     {
-        OnCoinEntered();   // ← 子クラスで変更できる
-
         coinCount++;
+
+        Debug.Log($"{gameObject.name} : {coinCount}");
+
+        OnCoinEntered();
 
         if (coinCount == 2)
         {
             GameManager.Instance.OpenAllFloors();
+            BingoManager.Instance.ResetBingo();
         }
-
-        Debug.Log(coinCount);
     }
     protected virtual void OnCoinEntered()
     {

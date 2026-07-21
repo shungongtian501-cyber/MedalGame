@@ -13,6 +13,8 @@ public class HoleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
+            Debug.Log($"{other.name} が {gameObject.name} に入った");
+
             hole.CoinEntered();
         }
     }
