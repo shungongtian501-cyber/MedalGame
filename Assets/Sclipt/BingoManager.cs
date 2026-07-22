@@ -8,11 +8,29 @@ public class BingoManager : MonoBehaviour
 
     [SerializeField] private TMP_Text[] numbers;
 
-    // 0～8番の点灯状態
+    // 点灯状態
     private bool[] opened = new bool[9];
 
-    // 報酬を渡したラインかどうか
+    // 既に報酬を渡したライン
     private bool[] bingoCompleted = new bool[8];
+
+    // 現在のビンゴ数
+    private int bingoCount = 0;
+
+    // ビンゴ数→報酬
+    [SerializeField]
+    private int[] rewardTable =
+    {
+        0,  //0ビンゴ
+        1,  //1ビンゴ
+        2,  //2ビンゴ
+        3,  //3ビンゴ
+        5,  //4ビンゴ
+        10, //5ビンゴ
+        15, //6ビンゴ
+        30, //7ビンゴ
+        99  //8ビンゴ
+    };
 
     // ビンゴライン
     private readonly int[,] bingoLines =
@@ -29,6 +47,8 @@ public class BingoManager : MonoBehaviour
         {2,4,6}
     };
 
+    public int BingoCount => bingoCount;
+
     private void Awake()
     {
         Instance = this;
@@ -39,14 +59,13 @@ public class BingoManager : MonoBehaviour
         ResetBingo();
     }
 
-    // 指定した番号を点灯
+    //====================================================
+    // 数字を点灯
+    //====================================================
     public void Fill(int number)
     {
-        Debug.Log($"Fill({number}) が呼ばれた");
-
         int index = number - 1;
 
-        // 既に点灯していたら何もしない
         if (opened[index])
             return;
 
@@ -57,9 +76,47 @@ public class BingoManager : MonoBehaviour
         CheckBingo();
     }
 
-    // ビンゴをリセット
+    //====================================================
+    // ビンゴ判定
+    //====================================================
+    private void CheckBingo()
+    {
+        int newBingo = 0;
+
+        for (int i = 0; i < bingoLines.GetLength(0); i++)
+        {
+            if (bingoCompleted[i])
+                continue;
+
+            if (opened[bingoLines[i, 0]] &&
+                opened[bingoLines[i, 1]] &&
+                opened[bingoLines[i, 2]])
+            {
+                bingoCompleted[i] = true;
+                newBingo++;
+
+                Debug.Log($"{i + 1}ライン完成！");
+            }
+        }
+
+        if (newBingo > 0)
+        {
+            bingoCount += newBingo;
+
+            Debug.Log($"現在 {bingoCount} ビンゴ");
+
+            // GameManagerへ現在の獲得予定枚数を渡す
+            GameManager.Instance.SetEarnedCoin(rewardTable[bingoCount]);
+        }
+    }
+
+    //====================================================
+    // リセット
+    //====================================================
     public void ResetBingo()
     {
+        bingoCount = 0;
+
         for (int i = 0; i < opened.Length; i++)
         {
             opened[i] = false;
@@ -70,52 +127,24 @@ public class BingoManager : MonoBehaviour
         {
             bingoCompleted[i] = false;
         }
+
+        GameManager.Instance.SetEarnedCoin(0);
     }
 
-    // 数字の透明度を変更
+    //====================================================
+    // 数字の透明度変更
+    //====================================================
     private void SetNumberAlpha(int index, float alpha)
     {
         Color color = numbers[index].color;
         color.a = alpha;
         numbers[index].color = color;
     }
-
-    // ビンゴ判定
-    private void CheckBingo()
-    {
-        Debug.Log(string.Join(",", opened));
-
-        int newBingo = 0;
-
-        for (int i = 0; i < bingoLines.GetLength(0); i++)
-        {
-            // 既に報酬を渡したラインなら飛ばす
-            if (bingoCompleted[i])
-                continue;
-
-            if (opened[bingoLines[i, 0]] &&
-                opened[bingoLines[i, 1]] &&
-                opened[bingoLines[i, 2]])
-            {
-                bingoCompleted[i] = true;
-                newBingo++;
-                GameManager.Instance.AddReward(10);
-
-                Debug.Log($"{i + 1}本目のライン完成！");
-            }
-        }
-
-        if (newBingo > 0)
-        {
-            Debug.Log($"新しく {newBingo} ラインビンゴ！");
-            // RewardManager.Instance.AddCoin(newBingo * 10);
-        }
-    }
-
     public void FillRandom()
     {
         List<int> candidates = new List<int>();
 
+        // 未点灯の数字を集める
         for (int i = 0; i < opened.Length; i++)
         {
             if (!opened[i])
@@ -124,10 +153,14 @@ public class BingoManager : MonoBehaviour
             }
         }
 
+        // 全部点灯済みなら何もしない
         if (candidates.Count == 0)
             return;
 
+        // ランダムに1つ選ぶ
         int randomNumber = candidates[Random.Range(0, candidates.Count)];
+
+        Debug.Log($"SPで {randomNumber} が点灯");
 
         Fill(randomNumber);
     }

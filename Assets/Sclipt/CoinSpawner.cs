@@ -10,6 +10,8 @@ public class CoinSpawner : MonoBehaviour
         {
             Instantiate(CoinPrefab);
             CanSpawn = false;
+            GameManager.Instance.playerCoin -= 1;
+            GameManager.Instance.UpdateUI();
         }
     }
 }
