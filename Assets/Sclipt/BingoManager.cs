@@ -99,6 +99,7 @@ public class BingoManager : MonoBehaviour
             {
                 bingoCompleted[i] = true;
                 newBingo++;
+                GameManager.Instance.AddReward(10);
 
                 Debug.Log($"{i + 1}本目のライン完成！");
             }
