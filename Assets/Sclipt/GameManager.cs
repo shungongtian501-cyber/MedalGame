@@ -4,12 +4,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private HoleBase[] holes;
+    [SerializeField] private Image[] rewardLights;
 
     public int playerCoin = 30;     // 所持コイン
     public int earnedCoin = 0;      // 換金予定コイン
 
     [SerializeField] private Text haveCoinText;
-    [SerializeField] private Text earnedCoinText;
 
     public static GameManager Instance;
 
@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         haveCoinText.text = "所持コイン枚数：" + playerCoin.ToString();
-        earnedCoinText.text = "獲得予定コイン枚数：" + earnedCoin.ToString();
     }
 
     public void OpenAllFloors()
@@ -56,6 +55,9 @@ public class GameManager : MonoBehaviour
     public void CashOut()
     {
         playerCoin += earnedCoin;
+        earnedCoin = 0;
+
+        ShowRewardLight(0);
 
         UpdateUI();
 
@@ -65,6 +67,41 @@ public class GameManager : MonoBehaviour
     public void SetEarnedCoin(int coin)
     {
         earnedCoin = coin;
+        ShowRewardLight(coin);
         UpdateUI();
+    }
+    public void ShowRewardLight(int reward)
+    {
+        Debug.Log($"配列数 : {rewardLights.Length}");
+
+        for (int i = 0; i < rewardLights.Length; i++)
+        {
+            if (rewardLights[i] == null)
+            {
+                Debug.LogError($"rewardLights[{i}] が設定されていません！");
+                continue;
+            }
+
+            Color color = rewardLights[i].color;
+            color.a = 0.3f;
+            rewardLights[i].color = color;
+        }
+
+        switch (reward)
+        {
+            case 1: SetLight(0); break;
+            case 3: SetLight(1); break;
+            case 5: SetLight(2); break;
+            case 10: SetLight(3); break;
+            case 15: SetLight(4); break;
+            case 30: SetLight(5); break;
+            case 99: SetLight(6); break;
+        }
+    }
+    private void SetLight(int index)
+    {
+        Color color = rewardLights[index].color;
+        color.a = 1f;
+        rewardLights[index].color = color;
     }
 }

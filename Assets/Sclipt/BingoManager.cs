@@ -27,8 +27,8 @@ public class BingoManager : MonoBehaviour
         3,  //3ビンゴ
         5,  //4ビンゴ
         10, //5ビンゴ
-        15, //6ビンゴ
-        30, //7ビンゴ
+        30, //6ビンゴ
+        50, //7ビンゴ
         99  //8ビンゴ
     };
 
@@ -107,6 +107,8 @@ public class BingoManager : MonoBehaviour
 
             // GameManagerへ現在の獲得予定枚数を渡す
             GameManager.Instance.SetEarnedCoin(rewardTable[bingoCount]);
+            //予定枚数テキストを点灯させる
+
         }
     }
 

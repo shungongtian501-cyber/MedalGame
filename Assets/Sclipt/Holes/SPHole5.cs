@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Hole5 : HoleBase
+public class SPHole5 : HoleBase
 {
+    protected override bool CountCoin => false;
     protected override void OnCoinEntered()
     {
         BingoManager.Instance.FillRandom();
