@@ -6,21 +6,6 @@ public abstract class HoleBase : MonoBehaviour
     [SerializeField] private GameObject floor;
 
     private int coinCount = 0;
-
-    //public void CoinEntered()
-    //{
-    //    OnCoinEntered();   // ← 子クラスで変更できる
-
-    //    coinCount++;
-
-    //    if (coinCount == 2)
-    //    {
-    //        GameManager.Instance.OpenAllFloors();
-    //        BingoManager.Instance.ResetBingo();
-    //    }
-
-    //    Debug.Log(coinCount);
-    //}
     public void CoinEntered()
     {
         coinCount++;

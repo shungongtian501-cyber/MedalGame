@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
 
         OpenAllFloors();
         BingoManager.Instance.ResetBingo();
-        CloseAllFloors();
     }
     public void SetEarnedCoin(int coin)
     {
