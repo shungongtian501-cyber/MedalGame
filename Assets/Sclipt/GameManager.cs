@@ -90,12 +90,13 @@ public class GameManager : MonoBehaviour
         switch (reward)
         {
             case 1: SetLight(0); break;
-            case 3: SetLight(1); break;
-            case 5: SetLight(2); break;
-            case 10: SetLight(3); break;
-            case 15: SetLight(4); break;
+            case 2: SetLight(1); break;
+            case 3: SetLight(2); break;
+            case 5: SetLight(3); break;
+            case 10: SetLight(4); break;
             case 30: SetLight(5); break;
-            case 99: SetLight(6); break;
+            case 50: SetLight(6); break;
+            case 99: SetLight(7); break;
         }
     }
     private void SetLight(int index)
