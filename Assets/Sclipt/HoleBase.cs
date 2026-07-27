@@ -33,11 +33,15 @@ public abstract class HoleBase : MonoBehaviour
 
     public void OpenFloor()
     {
+        Debug.Log($"OpenFloor : {gameObject.name}");
+
         floor.SetActive(false);
     }
 
     public void ResetHole()
     {
+        Debug.Log($"ResetHole : {gameObject.name}");
+
         coinCount = 0;
         floor.SetActive(true);
     }
