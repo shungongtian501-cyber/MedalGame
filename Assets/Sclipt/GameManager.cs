@@ -1,10 +1,14 @@
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private HoleBase[] holes;
     [SerializeField] private Image[] rewardLights;
+    [SerializeField] float _waittime = 0.2f;
+    [SerializeField] UnityEvent Activate;
 
     public int playerCoin = 30;     // 所持コイン
     public int earnedCoin = 0;      // 換金予定コイン
@@ -30,6 +34,14 @@ public class GameManager : MonoBehaviour
 
     public void OpenAllFloors()
     {
+        StartCoroutine(OpenAllFloorsCoroutine());
+    }
+
+    private IEnumerator OpenAllFloorsCoroutine()
+    {
+        // 0.2秒待つ
+        yield return new WaitForSeconds(_waittime);
+
         foreach (HoleBase hole in holes)
         {
             hole.OpenFloor();
