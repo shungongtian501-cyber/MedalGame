@@ -17,9 +17,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public bool IsOpeningFloor { get; private set; }
+
     private void Awake()
     {
         Instance = this;
+        Debug.Log("GameManager Awake");
     }
 
     private void Start()
@@ -39,13 +42,23 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator OpenAllFloorsCoroutine()
     {
-        // 0.2秒待つ
+        // 穴判定停止
+        IsOpeningFloor = true;
+
+        // 演出待ち
         yield return new WaitForSeconds(_waittime);
 
         foreach (HoleBase hole in holes)
         {
             hole.OpenFloor();
         }
+
+        // コインが落ち切るまで待つ
+        yield return new WaitForSeconds(1.0f);
+
+        // 新しいゲーム開始
+        CloseAllFloors();
+        BingoManager.Instance.ResetBingo();
     }
 
     public void CloseAllFloors()
@@ -54,6 +67,9 @@ public class GameManager : MonoBehaviour
         {
             hole.ResetHole();
         }
+
+        // 次のゲーム開始
+        IsOpeningFloor = false;
     }
 
     // ビンゴ報酬追加

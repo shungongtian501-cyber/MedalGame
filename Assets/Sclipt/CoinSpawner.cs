@@ -6,7 +6,8 @@ public class CoinSpawner : MonoBehaviour
     public bool CanSpawn = true;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && CanSpawn == true)
+        Debug.Log(GameManager.Instance);
+        if (Input.GetKeyDown(KeyCode.Space) && CanSpawn == true)
         {
             Instantiate(CoinPrefab);
             CanSpawn = false;
