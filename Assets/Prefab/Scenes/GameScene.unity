@@ -1043,7 +1043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1334921630}
-  _RandomNumber: 10
 --- !u!4 &153066284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3137951652154375802, guid: 925989794d302584581da214a5039e6f, type: 3}
@@ -5688,7 +5687,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.97301465, b: 0.28490567, a: 1}
+  m_Color: {r: 1, g: 0.9925254, b: 0.80566037, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6206,7 +6205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1178801207}
-  _RandomNumber: 10
 --- !u!1 &1091695585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3088992451416874512, guid: f6edab230a9484444a982d1c41ec3f6a, type: 3}
@@ -6230,7 +6228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1340225661}
-  _RandomNumber: 10
 --- !u!1 &1099238501
 GameObject:
   m_ObjectHideFlags: 0
@@ -6921,7 +6918,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 2114372493}
-  _RandomNumber: 10
 --- !u!1 &1269051606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 863257752921979955, guid: f6edab230a9484444a982d1c41ec3f6a, type: 3}
@@ -7660,7 +7656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1269051606}
-  _RandomNumber: 10
 --- !u!4 &1366874750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4747439143812318965, guid: f6edab230a9484444a982d1c41ec3f6a, type: 3}
@@ -10045,7 +10040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1920663355}
-  _RandomNumber: 10
 --- !u!1 &1770916536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3088992451416874512, guid: f6edab230a9484444a982d1c41ec3f6a, type: 3}
@@ -10069,7 +10063,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 679569420}
-  _RandomNumber: 10
 --- !u!1 &1781675453
 GameObject:
   m_ObjectHideFlags: 0

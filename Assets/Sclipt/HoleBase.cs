@@ -5,7 +5,7 @@ public abstract class HoleBase : MonoBehaviour
     [SerializeField] private GameObject floor;
 
     private int coinCount = 0;
-    [SerializeField] private int _RandomNumber = 10;
+    private int _RandomNumber = 1;
     protected virtual bool CountCoin => true;
     private static HoleBase Instance;
 
