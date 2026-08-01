@@ -12,7 +12,7 @@ public class HoleTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 床が開いている最中は判定しない
-        if (GameManager.Instance.IsOpeningFloor)
+        if (GameManager.Instance.IsOpeningFloor) 
             return;
 
         if (!other.CompareTag("Coin"))

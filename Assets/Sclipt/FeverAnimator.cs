@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement; // コルーチンに必要
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // コルーチンに必要
 
 public class FeverAnimator : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class FeverAnimator : MonoBehaviour
     private System.Collections.IEnumerator FeverTimerRoutine()
     {
         _actions.Invoke();
-        yield return new WaitForSeconds(1f); // 3秒間ここで待つ
+        yield return new WaitForSeconds(2f); // 2秒間ここで待つ
         SceneManager.LoadScene("FeverScene");
 
     }
