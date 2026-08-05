@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image[] rewardLights;
     [SerializeField] float _waittime = 0.2f;
     [SerializeField] UnityEvent Activate;
+    public int feverCoin = 0;
 
     public int playerCoin = 30;     // 所持コイン
     public int earnedCoin = 0;      // 換金予定コイン
@@ -21,12 +22,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        Debug.Log("GameManager Awake");
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
+        playerCoin += CoinData.Instance.feverCoin;
+        CoinData.Instance.feverCoin = 0;
+
         UpdateUI();
     }
 
