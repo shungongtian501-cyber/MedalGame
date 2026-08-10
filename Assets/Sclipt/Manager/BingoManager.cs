@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,9 @@ public class BingoManager : MonoBehaviour
     public static BingoManager Instance;
 
     [SerializeField] private TMP_Text[] numbers;
-    [SerializeField] UnityEvent _actions;
+    [SerializeField] UnityEvent _When8lineactions;
+    [SerializeField] AudioSource _NormalBGM;
+    [SerializeField] AudioSource _ReachBGM;
 
     // 点灯状態
     private bool[] opened = new bool[9];
@@ -112,9 +115,15 @@ public class BingoManager : MonoBehaviour
             //予定枚数テキストを点灯させる
             if(bingoCount == 8)
             {
-                _actions.Invoke();
+                _When8lineactions.Invoke();
             }
 
+        }
+
+        if(bingoCount == 7)
+        {
+            _NormalBGM.Pause();
+            _ReachBGM.Play();   
         }
     }
 
@@ -171,5 +180,14 @@ public class BingoManager : MonoBehaviour
         Debug.Log($"SPで {randomNumber} が点灯");
 
         Fill(randomNumber);
+    }
+    //あとで消す
+    public void Tester()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            FillRandom();
+            Debug.Log("Q");
+        }
     }
 }

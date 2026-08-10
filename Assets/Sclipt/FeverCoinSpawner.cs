@@ -15,4 +15,8 @@ public class FeverCoinSpawner : MonoBehaviour
             CanSpawn = false;
         }
     }
+    public void StartSpawn()
+    {
+        CanSpawn = true;
+    }
 }

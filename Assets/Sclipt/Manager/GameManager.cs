@@ -35,8 +35,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        playerCoin += CoinData.Instance.feverCoin;
-        CoinData.Instance.feverCoin = 0;
+        if (CoinData.Instance != null)
+        {
+            playerCoin += CoinData.Instance.feverCoin;
+            CoinData.Instance.feverCoin = 0;
+        }
+        else
+        {
+            Debug.LogWarning("CoinData.Instance が存在しません！");
+        }
 
         UpdateUI();
     }
