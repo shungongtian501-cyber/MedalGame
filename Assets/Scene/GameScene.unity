@@ -8413,7 +8413,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1409866606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1409866603}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: PlayInFixedTime
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CorrectButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 366230900}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CashOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1409866605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8429,18 +8453,19 @@ MonoBehaviour:
   _WhenFPushed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1409866603}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 366230900}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CashOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: CorrectButton
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _anim: {fileID: 1409866603}
 --- !u!114 &1409866606
 MonoBehaviour:
   m_ObjectHideFlags: 0
