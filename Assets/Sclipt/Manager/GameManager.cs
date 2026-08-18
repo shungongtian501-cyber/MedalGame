@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int earnedCoin = 0;      // 換金予定コイン
 
     [SerializeField] private Text haveCoinText;
+    [SerializeField] private Text Winstext;
 
     public static GameManager Instance;
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         haveCoinText.text = "所持コイン枚数：" + playerCoin.ToString();
+        Winstext.text = "ゲット" + earnedCoin.ToString();
     }
 
     public void OpenAllFloors()
