@@ -153,4 +153,9 @@ public class GameManager : MonoBehaviour
         color.a = 1f;
         rewardLights[index].color = color;
     }
+    public void Finish()
+    {
+        Debug.Log("Finish");
+        //Application.Quit();
+    }
 }
